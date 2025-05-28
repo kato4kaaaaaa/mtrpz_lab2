@@ -81,3 +81,19 @@ def test_findFirst_and_findLast():
     assert lst.findLast('a') == 2
     assert lst.findFirst('x') == -1
     assert lst.findLast('x') == -1
+def test_clear():
+    lst = ArrayBasedList()
+    lst.append('a')
+    lst.clear()
+    assert lst.length() == 0
+
+def test_extend():
+    lst1 = ArrayBasedList()
+    lst2 = ArrayBasedList()
+    lst1.append('a')
+    lst2.append('b')
+    lst1.extend(lst2)
+    assert lst1.length() == 2
+    assert lst1.get(1) == 'b'
+    lst2.append('c')
+    assert lst1.length() == 2  # lst1 не змінюється при зміні lst2
