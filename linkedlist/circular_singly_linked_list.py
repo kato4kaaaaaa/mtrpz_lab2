@@ -174,3 +174,65 @@ class CircularSinglyLinkedList:
         for _ in range(elements._size):
             self.append(current.data)
             current = current.next
+
+
+def demo():
+    print("Створення списку...")
+    csll = CircularSinglyLinkedList()
+
+    # append
+    csll.append('a')
+    csll.append('b')
+    csll.append('c')
+    print(f"Після append: {[csll.get(i) for i in range(csll.length())]}")
+
+    # insert
+    csll.insert('z', 0)  # вставити на початок
+    csll.insert('y', 2)  # вставити в середину
+    csll.insert('x', csll.length())  # вставити в кінець
+    print(f"Після insert: {[csll.get(i) for i in range(csll.length())]}")
+
+    # delete
+    deleted = csll.delete(2)
+    print(f"Видалено елемент на позиції 2: {deleted}")
+    print(f"Після delete: {[csll.get(i) for i in range(csll.length())]}")
+
+    # deleteAll
+    csll.append('a')
+    csll.append('a')
+    print(f"Перед deleteAll('a'): {[csll.get(i) for i in range(csll.length())]}")
+    csll.deleteAll('a')
+    print(f"Після deleteAll('a'): {[csll.get(i) for i in range(csll.length())]}")
+
+    # get
+    print(f"Елемент на позиції 1: {csll.get(1)}")
+
+    # clone
+    cloned = csll.clone()
+    print(f"Клон списку: {[cloned.get(i) for i in range(cloned.length())]}")
+
+    # reverse
+    csll.reverse()
+    print(f"Після reverse: {[csll.get(i) for i in range(csll.length())]}")
+
+    # findFirst & findLast
+    csll.append('y')
+    print(f"findFirst('y'): {csll.findFirst('y')}")
+    print(f"findLast('y'): {csll.findLast('y')}")
+
+    # clear
+    csll.clear()
+    print(f"Після clear, довжина: {csll.length()}")
+
+    # extend
+    list1 = CircularSinglyLinkedList()
+    list2 = CircularSinglyLinkedList()
+    for ch in ['p', 'q', 'r']:
+        list1.append(ch)
+    for ch in ['x', 'y']:
+        list2.append(ch)
+    list1.extend(list2)
+    print(f"Після extend: {[list1.get(i) for i in range(list1.length())]}")
+
+if __name__ == "__main__":
+    demo()
