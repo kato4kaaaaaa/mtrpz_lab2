@@ -65,3 +65,45 @@ class CircularSinglyLinkedList:
 
         self._size -= 1
         return current.data
+
+    def deleteAll(self, element: str) -> None:
+        if self.tail is None:
+            return
+
+        current = self.tail.next
+        prev = self.tail
+        count = self._size
+
+        i = 0
+        while i < count:
+            if current.data == element:
+                # Видаляємо current
+                if current == self.tail:
+                    if self._size == 1:
+                        self.tail = None
+                        self._size -= 1
+                        break
+                    else:
+                        prev.next = current.next
+                        self.tail = prev
+                        current = current.next
+                        self._size -= 1
+                else:
+                    prev.next = current.next
+                    current = current.next
+                    self._size -= 1
+                count -= 1  # зменшуємо ітерацію, бо список став коротшим
+                # i не збільшуємо, бо current змінився
+            else:
+                prev = current
+                current = current.next
+                i += 1
+
+    def get(self, index: int) -> str:
+        if index < 0 or index >= self._size or self.tail is None:
+            raise IndexError("Index out of bounds")
+
+        current = self.tail.next
+        for _ in range(index):
+            current = current.next
+        return current.data
