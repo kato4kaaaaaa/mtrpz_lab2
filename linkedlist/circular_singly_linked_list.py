@@ -155,5 +155,17 @@ class CircularSinglyLinkedList:
                     last_pos = i
                 current = current.next
             return last_pos
+        def clear(self) -> None:
+            self.tail = None
+            self._size = 0
+
+        def extend(self, elements: 'CircularSinglyLinkedList') -> None:
+            if elements.tail is None:
+                return  # Якщо другий список пустий, нічого не робимо
+
+            current = elements.tail.next
+            for _ in range(elements._size):
+                self.append(current.data)
+                current = current.next
 
 
