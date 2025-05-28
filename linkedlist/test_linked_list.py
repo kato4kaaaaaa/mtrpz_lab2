@@ -55,7 +55,7 @@ def test_deleteAll():
     assert lst.length() == 1
     assert lst.get(0) == 'b'
 def test_clone():
-    lst = CircularSinglyLinkedList())
+    lst = CircularSinglyLinkedList()
     lst.append('a')
     clone = lst.clone()
     assert clone.length() == lst.length()
