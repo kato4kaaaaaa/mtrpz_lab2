@@ -18,3 +18,12 @@ class ArrayBasedList:
             raise IndexError("Index out of bounds")
         return self.data.pop(index)
 
+    def deleteAll(self, element: str) -> None:
+        self.data = [x for x in self.data if x != element]
+
+    def get(self, index: int) -> str:
+        if index < 0 or index >= len(self.data):
+            raise IndexError("Index out of bounds")
+        return self.data[index]
+
+
