@@ -40,11 +40,18 @@ class ArrayBasedList:
             except ValueError:
                 return -1
 
-        def findLast(self, element: str) -> int:
+    def findLast(self, element: str) -> int:
             for i in range(len(self.data) - 1, -1, -1):
                 if self.data[i] == element:
                     return i
             return -1
+
+    def clear(self) -> None:
+        self.data.clear()
+
+    def extend(self, elements: 'ArrayBasedList') -> None:
+        self.data.extend(elements.data)
+
 
 
 
