@@ -119,3 +119,20 @@ class CircularSinglyLinkedList:
             current = current.next
         return new_list
 
+    def reverse(self) -> None:
+        if self.tail is None or self._size == 1:
+            return  # Порожній або один елемент — нічого міняти
+
+        prev = self.tail
+        current = self.tail.next
+        old_head = current  # Зберігаємо стару голову
+
+        for _ in range(self._size):
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+        self.tail = old_head  # Старий голова стає новим хвостом
+
+
