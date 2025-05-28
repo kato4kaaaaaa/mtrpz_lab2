@@ -107,3 +107,15 @@ class CircularSinglyLinkedList:
         for _ in range(index):
             current = current.next
         return current.data
+
+    def clone(self) -> 'CircularSinglyLinkedList':
+        new_list = CircularSinglyLinkedList()
+        if self.tail is None:
+            return new_list  # Порожній список
+
+        current = self.tail.next
+        for _ in range(self._size):
+            new_list.append(current.data)
+            current = current.next
+        return new_list
+
