@@ -135,4 +135,25 @@ class CircularSinglyLinkedList:
 
         self.tail = old_head  # Старий голова стає новим хвостом
 
+        def findFirst(self, element: str) -> int:
+            if self.tail is None:
+                return -1
+            current = self.tail.next
+            for i in range(self._size):
+                if current.data == element:
+                    return i
+                current = current.next
+            return -1
+
+        def findLast(self, element: str) -> int:
+            if self.tail is None:
+                return -1
+            current = self.tail.next
+            last_pos = -1
+            for i in range(self._size):
+                if current.data == element:
+                    last_pos = i
+                current = current.next
+            return last_pos
+
 
