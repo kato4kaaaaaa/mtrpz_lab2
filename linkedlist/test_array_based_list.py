@@ -55,3 +55,29 @@ def test_deleteAll():
     lst.deleteAll('a')
     assert lst.length() == 1
     assert lst.get(0) == 'b'
+def test_clone():
+    lst = ArrayBasedList()
+    lst.append('a')
+    clone = lst.clone()
+    assert clone.length() == lst.length()
+    assert clone.get(0) == 'a'
+    clone.append('b')
+    assert lst.length() == 1  # оригінал не змінився
+
+def test_reverse():
+    lst = ArrayBasedList()
+    for ch in ['a', 'b', 'c']:
+        lst.append(ch)
+    lst.reverse()
+    assert lst.get(0) == 'c'
+    assert lst.get(2) == 'a'
+
+def test_findFirst_and_findLast():
+    lst = ArrayBasedList()
+    lst.append('a')
+    lst.append('b')
+    lst.append('a')
+    assert lst.findFirst('a') == 0
+    assert lst.findLast('a') == 2
+    assert lst.findFirst('x') == -1
+    assert lst.findLast('x') == -1
