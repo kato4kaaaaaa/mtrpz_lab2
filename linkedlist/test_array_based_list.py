@@ -39,3 +39,19 @@ def test_delete_invalid_index():
     lst.append('a')
     with pytest.raises(IndexError):
         lst.delete(1)
+def test_delete():
+    lst = ArrayBasedList()
+    lst.append('a')
+    lst.append('b')
+    deleted = lst.delete(0)
+    assert deleted == 'a'
+    assert lst.length() == 1
+
+def test_deleteAll():
+    lst = ArrayBasedList()
+    lst.append('a')
+    lst.append('b')
+    lst.append('a')
+    lst.deleteAll('a')
+    assert lst.length() == 1
+    assert lst.get(0) == 'b'
