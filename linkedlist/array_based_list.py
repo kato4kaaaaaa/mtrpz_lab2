@@ -26,4 +26,13 @@ class ArrayBasedList:
             raise IndexError("Index out of bounds")
         return self.data[index]
 
+    def clone(self) -> 'ArrayBasedList':
+        new_list = ArrayBasedList()
+        new_list.data = self.data.copy()
+        return new_list
+
+    def reverse(self) -> None:
+        self.data.reverse()
+
+
 
