@@ -17,3 +17,25 @@ def test_insert_and_get():
     lst.insert('b', 1)
     assert lst.get(1) == 'b'
     assert lst.length() == 3
+def test_insert_invalid_index():
+    lst = ArrayBasedList()
+    with pytest.raises(IndexError):
+        lst.insert('x', -1)
+    with pytest.raises(IndexError):
+        lst.insert('x', 1)
+
+def test_get_invalid_index():
+    lst = ArrayBasedList()
+    with pytest.raises(IndexError):
+        lst.get(0)
+    lst.append('a')
+    with pytest.raises(IndexError):
+        lst.get(1)
+
+def test_delete_invalid_index():
+    lst = ArrayBasedList()
+    with pytest.raises(IndexError):
+        lst.delete(0)
+    lst.append('a')
+    with pytest.raises(IndexError):
+        lst.delete(1)
