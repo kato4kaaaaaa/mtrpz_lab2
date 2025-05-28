@@ -1,12 +1,18 @@
+class Node:
+    def __init__(self, data: str):
+        self.data = data
+        self.next = None
+
+
 class CircularSinglyLinkedList:
     def __init__(self):
         self.tail = None
         self._size = 0
 
-    def length(self):
+    def length(self) -> int:
         return self._size
 
-    def append(self, element: str):
+    def append(self, element: str) -> None:
         new_node = Node(element)
         if self.tail is None:
             new_node.next = new_node
@@ -135,37 +141,36 @@ class CircularSinglyLinkedList:
 
         self.tail = old_head  # Старий голова стає новим хвостом
 
-        def findFirst(self, element: str) -> int:
-            if self.tail is None:
-                return -1
-            current = self.tail.next
-            for i in range(self._size):
-                if current.data == element:
-                    return i
-                current = current.next
+    def findFirst(self, element: str) -> int:
+        if self.tail is None:
             return -1
+        current = self.tail.next
+        for i in range(self._size):
+            if current.data == element:
+                return i
+            current = current.next
+        return -1
 
-        def findLast(self, element: str) -> int:
-            if self.tail is None:
-                return -1
-            current = self.tail.next
-            last_pos = -1
-            for i in range(self._size):
-                if current.data == element:
-                    last_pos = i
-                current = current.next
-            return last_pos
-        def clear(self) -> None:
-            self.tail = None
-            self._size = 0
+    def findLast(self, element: str) -> int:
+        if self.tail is None:
+            return -1
+        current = self.tail.next
+        last_pos = -1
+        for i in range(self._size):
+            if current.data == element:
+                last_pos = i
+            current = current.next
+        return last_pos
 
-        def extend(self, elements: 'CircularSinglyLinkedList') -> None:
-            if elements.tail is None:
-                return  # Якщо другий список пустий, нічого не робимо
+    def clear(self) -> None:
+        self.tail = None
+        self._size = 0
 
-            current = elements.tail.next
-            for _ in range(elements._size):
-                self.append(current.data)
-                current = current.next
+    def extend(self, elements: 'CircularSinglyLinkedList') -> None:
+        if elements.tail is None:
+            return  # Якщо другий список пустий, нічого не робимо
 
-
+        current = elements.tail.next
+        for _ in range(elements._size):
+            self.append(current.data)
+            current = current.next
