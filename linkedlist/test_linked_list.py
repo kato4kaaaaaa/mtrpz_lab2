@@ -1,4 +1,4 @@
-from linkedlist.circular_list import CircularSinglyLinkedList
+from linkedlist.circular_singly_linked_list import CircularSinglyLinkedList
 import pytest
 
 
