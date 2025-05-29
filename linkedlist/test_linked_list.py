@@ -1,4 +1,5 @@
-from linked_list import CircularSinglyLinkedList
+from .circular_list import CircularSinglyLinkedList
+
 
 def test_append_and_length():
     lst = CircularSinglyLinkedList()
